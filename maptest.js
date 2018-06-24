@@ -804,7 +804,7 @@
 	          map = L.map('map').setView(loc, 17);
 	          //地理院地図レイヤー追加
 
-	          L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+	          L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 	            attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
 	          }).addTo(map);
 	          L.marker(loc).addTo(map);
