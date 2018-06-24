@@ -1,0 +1,32 @@
+{
+  "name": "maptest",
+  "version": "0.0.1",
+  "description": "leafletの検証用",
+  "main": "index.html",
+  "dependencies": {
+    "livereloadx": "^0.3.10"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "rollup": "^0.61.2",
+    "rollup-plugin-babel": "^3.0.5",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "livereloadx -s .",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfpgmr/maptest.git"
+  },
+  "author": "S.F.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sfpgmr/maptest/issues"
+  },
+  "homepage": "https://github.com/sfpgmr/maptest#readme"
+}
