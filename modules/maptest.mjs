@@ -1,11 +1,15 @@
 "use strict";
 
+
+
 (async()=>{
     let initLat = 34.678395;
     let initLon =  135.4601305;
+    let watchId;
 
     let loc = await new Promise((resolve,reject)=>{
       if(navigator.geolocation){
+        navigator.geolocation.watchPosition(updateLoc,e=>{throw e;},{enableHighAccuracy:true,maximumAge:27000});
         navigator.geolocation.getCurrentPosition((position)=> {
           resolve([position.coords.latitude, position.coords.longitude]);
         },(e)=>reject(e));
@@ -13,6 +17,7 @@
         resolve ([initLat,initLon]);
       }
     });
+
     let map = L.map('map').setView(loc,17);
     //地理院地図レイヤー追加
     L.tileLayer(
@@ -22,6 +27,12 @@
       }
     ).addTo(map);
     L.marker(loc).addTo(map);
+
+    function updateLoc(position){
+      loc[0] = position.coords.latitude;
+      loc[1] = position.coords.longitude;
+      map.setView(loc,17);
+    }
 
   })();
 

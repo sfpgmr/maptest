@@ -779,16 +779,25 @@
 	var _this = undefined;
 
 	asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee() {
-	  var initLat, initLon, loc, map;
+	  var initLat, initLon, loc, map, updateLoc;
 	  return regenerator.wrap(function _callee$(_context) {
 	    while (1) {
 	      switch (_context.prev = _context.next) {
 	        case 0:
+	          updateLoc = function updateLoc(position) {
+	            loc[0] = position.coords.latitude;
+	            loc[1] = position.coords.longitude;
+	            map.setView(loc, 17);
+	          };
+
 	          initLat = 34.678395;
 	          initLon = 135.4601305;
-	          _context.next = 4;
+	          _context.next = 6;
 	          return new Promise(function (resolve, reject) {
 	            if (navigator.geolocation) {
+	              navigator.geolocation.watchPosition(updateLoc, function (e) {
+	                throw e;
+	              }, { enableHighAccuracy: true, maximumAge: 27000 });
 	              navigator.geolocation.getCurrentPosition(function (position) {
 	                resolve([position.coords.latitude, position.coords.longitude]);
 	              }, function (e) {
@@ -799,7 +808,7 @@
 	            }
 	          });
 
-	        case 4:
+	        case 6:
 	          loc = _context.sent;
 	          map = L.map('map').setView(loc, 17);
 	          //地理院地図レイヤー追加
@@ -809,7 +818,7 @@
 	          }).addTo(map);
 	          L.marker(loc).addTo(map);
 
-	        case 8:
+	        case 10:
 	        case 'end':
 	          return _context.stop();
 	      }
