@@ -779,7 +779,7 @@
 	var _this = undefined;
 
 	asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee() {
-	  var initLat, initLon, loc, map, updateLoc;
+	  var initLat, initLon, watchId, zoom, loc, map, marker, startMarker, updateLoc;
 	  return regenerator.wrap(function _callee$(_context) {
 	    while (1) {
 	      switch (_context.prev = _context.next) {
@@ -787,15 +787,18 @@
 	          updateLoc = function updateLoc(position) {
 	            loc[0] = position.coords.latitude;
 	            loc[1] = position.coords.longitude;
-	            map.setView(loc, 17);
+	            map.setView(loc, map.getZoom());
+	            marker.setLatLng(loc);
 	          };
 
 	          initLat = 34.678395;
 	          initLon = 135.4601305;
-	          _context.next = 6;
+	          watchId = void 0;
+	          zoom = 17;
+	          _context.next = 7;
 	          return new Promise(function (resolve, reject) {
 	            if (navigator.geolocation) {
-	              navigator.geolocation.watchPosition(updateLoc, function (e) {
+	              watchId = navigator.geolocation.watchPosition(updateLoc, function (e) {
 	                throw e;
 	              }, { enableHighAccuracy: true, maximumAge: 27000 });
 	              navigator.geolocation.getCurrentPosition(function (position) {
@@ -808,17 +811,19 @@
 	            }
 	          });
 
-	        case 6:
+	        case 7:
 	          loc = _context.sent;
-	          map = L.map('map').setView(loc, 17);
+	          map = L.map('map').setView(loc, zoom);
 	          //地理院地図レイヤー追加
 
 	          L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 	            attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
 	          }).addTo(map);
-	          L.marker(loc).addTo(map);
 
-	        case 10:
+	          marker = L.marker(loc).addTo(map);
+	          startMarker = L.marker(loc).addTo(map);
+
+	        case 12:
 	        case 'end':
 	          return _context.stop();
 	      }
