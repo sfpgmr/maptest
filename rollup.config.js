@@ -3,7 +3,7 @@ import commonjs     from 'rollup-plugin-commonjs'
 import babel        from 'rollup-plugin-babel'
 
 export default {
-  entry: './src/maptest.mjs',  // エントリーポイント
+  entry: './modules/maptest.mjs',  // エントリーポイント
   dest: './maptest.js', // アウトプット
   plugins: [  // 利用するプラグイン
     nodeResolve({ jsnext: true }), // node_modulesを利用する
