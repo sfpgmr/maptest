@@ -24,8 +24,7 @@
     L.tileLayer(
       'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
       {
-        attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
-        detectRetina:true
+        attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
       }
     ).addTo(map);
 
