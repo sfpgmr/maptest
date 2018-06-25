@@ -817,8 +817,7 @@
 	          //地理院地図レイヤー追加
 
 	          L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-	            attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
-	            detectRetina: true
+	            attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
 	          }).addTo(map);
 
 	          marker = L.circleMarker(loc, { radius: 5, color: 'red', fill: true, fillColor: 'red' }).addTo(map);
