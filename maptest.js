@@ -794,7 +794,7 @@
 	          initLat = 34.678395;
 	          initLon = 135.4601305;
 	          watchId = void 0;
-	          zoom = 17;
+	          zoom = 18;
 	          _context.next = 7;
 	          return new Promise(function (resolve, reject) {
 	            if (navigator.geolocation) {
@@ -813,14 +813,15 @@
 
 	        case 7:
 	          loc = _context.sent;
-	          map = L.map('map').setView(loc, zoom);
+	          map = L.map('map', { minZoom: 6, maxZoom: 18 }).setView(loc, zoom);
 	          //地理院地図レイヤー追加
 
 	          L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-	            attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
+	            attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+	            detectRetina: true
 	          }).addTo(map);
 
-	          marker = L.marker(loc).addTo(map);
+	          marker = L.circleMarker(loc, { radius: 5, color: 'red', fill: true, fillColor: 'red' }).addTo(map);
 	          startMarker = L.marker(loc).addTo(map);
 
 	        case 12:
